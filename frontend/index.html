@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering algorithms demo</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Clustering <span>algorithms demo</span></h1>
+
+    <div class="dropdown-container">
+        <select id="endpoint-dropdown">
+            <option value="/k-means">K-Means</option>
+            <option value="/dbscan">DBSCAN</option>
+        </select>
+        <button id="run-button">Run</button>
+    </div>
+
+    <div class="result-display">
+        <div class="score-container">
+            <h2>Silhouette score</h2>
+            <p class="big-number">...</p>
+        </div>
+        <div class="plot-container">
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

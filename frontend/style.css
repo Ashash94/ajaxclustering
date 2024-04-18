@@ -1,0 +1,89 @@
+body {
+    background-color: #272727;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: azure;
+}
+
+h1 {
+    font-size: 4em;
+    font-weight: bold;
+    color: lightblue;
+    text-align: center;
+    margin-bottom: 80px;
+}
+h1 span {
+    font-weight: normal;
+    font-style: italic;
+    color: azure;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: lightblue;
+    margin: 0 auto;
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+}
+.dropdown-container > * {
+    margin: 0 5px;
+}
+
+select {
+    font-size: 1em;
+    min-width: 250px;
+}
+
+button {
+    font-size: 1em;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: lightblue;
+    color: #272727;
+    border: none;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: rgb(157, 197, 211);
+    box-shadow: 2px 2px 4px #181818;
+}
+
+.result-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.score-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.score-container > * {
+    margin: 20px;
+}
+
+.plot-container {
+    background: none;
+    max-width: 60%;
+    overflow: hidden;
+}
+
+.plot-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+p.big-number {
+    font-size: 2em;
+    font-weight: bolder;
+    color: azure;
+    margin: 0;
+}
