@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+venv/
+.venv/
 
 # Personal settings
 backend/data/
