@@ -1,0 +1,39 @@
+apiVersion: 2023-05-01
+location: westeurope
+name: ashleyContainerGroupB15
+properties:
+  imageRegistryCredentials:
+      - server: ashleyregisterb15.azurecr.io
+        username: ashleyregisterb15
+        password: password.registry
+  containers:
+  - name: b15backend
+    properties:
+      image: ashleyregisterb15.azurecr.io/ajaxbackend:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      ports:
+      - port: 8000
+  - name: b15frontend
+    properties:
+      image: ashleyregisterb15.azurecr.io/ajaxfrontend:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      ports:
+      - port: 8001
+  osType: Linux
+  ipAddress:
+    type: Public
+    dnsNameLabel: ashley-ajax-clustering
+    ports:
+    - protocol: tcp
+      port: 8000
+    - protocol: tcp
+      port: 8001
+tags:
+  ashley: b15
+type: Microsoft.ContainerInstance/containerGroups

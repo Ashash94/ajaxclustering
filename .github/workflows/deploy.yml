@@ -1,0 +1,63 @@
+name: Azure Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+     
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az account show
+
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ashleyregisterb15.azurecr.io
+          username: ashleyregisterb15
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build and push backend Docker image
+        working-directory: backend
+        run: |
+          docker build -t ashleyregisterb15.azurecr.io/ajaxbackend .
+          docker push ashleyregisterb15.azurecr.io/ajaxbackend
+
+      - name: Build and push frontend Docker image
+        working-directory: frontend
+        run: |
+          docker build -t ashleyregisterb15.azurecr.io/ajaxfrontend .
+          docker push ashleyregisterb15.azurecr.io/ajaxfrontend
+
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "password.registry"
+          replace: ${{ secrets.ACR_PASSWORD }}
+          regex: false
+          include: 'deploy-aci.yaml'
+       
+      - name: Delete Previous Same Container Instances
+        run: az container delete --resource-group ashleyb15 --name ashleyContainerGroupB15 --yes
+   
+      - name: Deploy to Azure Container Instances
+        run: az container create --resource-group ashleyb15 --file deploy-aci.yaml
