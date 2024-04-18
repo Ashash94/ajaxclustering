@@ -13,6 +13,8 @@ origins = ["*"]
 
 app = FastAPI()
 
+import sys
+print(sys.executable, sys.version)
 
 app.add_middleware(
     CORSMiddleware,

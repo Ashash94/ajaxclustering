@@ -1,5 +1,4 @@
-// const API_PATH = "http://abajax-back.dydgc6bxeyhhbaa4.westeurope.azurecontainer.io:8000"
-const API_PATH = "http://localhost:8000"
+const API_PATH = "http://b15backend.dnc3esbtaubre8cy.westeurope.azurecontainer.io:8000"
 
 document.addEventListener("DOMContentLoaded", function() {
     const runButton = document.getElementById("run-button");
