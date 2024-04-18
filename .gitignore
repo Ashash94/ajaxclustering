@@ -6,5 +6,5 @@ venv/
 .venv/
 
 # Personal settings
-backend/data/
-backend/pkl/
+# backend/data/
+# backend/pkl/
