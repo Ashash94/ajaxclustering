@@ -1,4 +1,4 @@
-const API_PATH = "http://ashley-ajax-clustering.westeurope.azurecontainer.io:8000/"
+const API_PATH = "http://ashley-ajax-clustering.westeurope.azurecontainer.io:8000"
                     
 
 document.addEventListener("DOMContentLoaded", function() {

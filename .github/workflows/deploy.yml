@@ -55,9 +55,10 @@ jobs:
           replace: ${{ secrets.ACR_PASSWORD }}
           regex: false
           include: 'deploy-aci.yaml'
+      
        
-      # - name: Delete Previous Same Container Instances
-      #   run: az container delete --resource-group ashleyb15 --name ashleyContainerGroupB15 --yes
+      - name: Delete Previous Same Container Instances
+        run: az container delete --resource-group ashleyb15 --name ashleyContainerGroupB15 --yes
    
       - name: Deploy to Azure Container Instances
         run: az container create --resource-group ashleyb15 --file deploy-aci.yaml
