@@ -54,4 +54,4 @@ def return_dbscan_silhouette_score():
 async def return_dbscan_plot():
     return dbscan_plot(dbscan_model)
 
-uvicorn.run(app, host="ashley-ajax-clustering.westeurope.azurecontainer.io", port=8000)
+uvicorn.run(app, host="0.0.0.0", port=8000)
