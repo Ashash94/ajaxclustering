@@ -36,6 +36,7 @@ with open("pkl/dbscan.pkl", "rb") as f:
 @app.get("/k-means/score")
 def return_kmeans_silhouette_score():
     result_kmeans = get_kmeans_silhouette_score()
+    print("Le résultat du modèle KMeans est:", result_kmeans)
     return {"result": result_kmeans}
 
 
@@ -47,6 +48,7 @@ def return_kmeans_plot():
 @app.get("/dbscan/score")
 def return_dbscan_silhouette_score():
     result_dbscan = get_dbscan_silhouette_score()
+    print("Le résultat du modèle Dscan est:", result_dbscan)
     return {"result": result_dbscan}
 
 
