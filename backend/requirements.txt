@@ -10,5 +10,5 @@ fastapi
 httpx
 pandas
 numpy
-pickle
 os
+pickle
