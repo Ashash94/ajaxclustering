@@ -18,6 +18,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pytest
+          pip install fastapi
+          pip install uvicorn
+          pip install requests
 
       - uses: actions/checkout@v3
 
