@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-HOST = "http://ashley-ajax-clustering.westeurope.azurecontainer.io/"
+HOST = "ashley-ajax-clustering.westeurope.azurecontainer.io/"
 PORT = 8000
 
 # Models loading
