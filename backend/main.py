@@ -1,5 +1,6 @@
 import uvicorn
 import pickle
+import sys
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,7 +14,6 @@ origins = ["*"]
 
 app = FastAPI()
 
-import sys
 print(sys.executable, sys.version)
 
 app.add_middleware(
@@ -24,6 +24,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+HOST = "http://ashley-ajax-clustering.westeurope.azurecontainer.io/"
+PORT = 8000
 
 # Models loading
 with open("pkl/kmeans.pkl", "rb") as f:
@@ -56,4 +58,6 @@ def return_dbscan_silhouette_score():
 async def return_dbscan_plot():
     return dbscan_plot(dbscan_model)
 
-uvicorn.run(app, host="0.0.0.0", port=8000)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host=HOST, port=PORT)

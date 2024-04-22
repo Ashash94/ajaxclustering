@@ -1,49 +1,38 @@
-import requests
+import pytest
+from fastapi.testclient import TestClient
+from requests.exceptions import RequestException
 
-URL_API = "http://localhost:8000"
+from main import app, HOST, PORT
 
-list_url = [
-    URL_API + "/k-means/score",
-    URL_API + "/k-means/plot",
-    URL_API + "/dbscan/score",
-    URL_API + "/dbscan/plot",
+client = TestClient(app)
+
+endpoints = [
+    ("/k-means/score", "score"),
+    ("/k-means/plot", "plot"),
+    ("/dbscan/score", "score"),
+    ("/dbscan/plot", "plot"),
 ]
 
+PORT = str(PORT)
 
-def check_response(list_link):
-    for u in list_link:
+def test_api_endpoints():
+    for endpoint, endpoint_type in endpoints:
         try:
-            response = requests.get(u)
-            if response.status_code == 200:
-                if "score" in u:
-                    print(u)
-                    json_data = response.json()
-                    result = json_data["result"]
-                    if -1 <= result <= 1:
-                        print(
-                            f"Le silhouette score de {result} respecte les valeurs attendues."
-                        )
-                    else:
-                        print(
-                            f"Le silhouette score de {result} ne respecte pas les valeurs attendues."
-                        )
-                elif "plot" in u:
-                    print(u)
-                    headers = response.headers
-                    format_type = headers.get("content-type")
-                    if format_type == "image/png":
-                        print("L'API renvoie bien une image.")
-                    else:
-                        print("La donnée envoyée ne respecte pas le format attendu")
-                else:
-                    print(u)
-                    print("L'URL ne renvoie ni de score ni un graphique.")
-            else:
-                print(u)
-                print("La requête n'a pas abouti :", response.status_code)
+            full_url = HOST + ":" + PORT + endpoint 
+            response = client.get(full_url)
+            assert response.status_code == 200, f"La requête à {full_url} a échoué avec le code {response.status_code}"
 
-        except Exception as e:
-            print(f"Erreur suivante: {e}")
+            if endpoint_type == "score":
+                json_data = response.json()
+                result = json_data["result"]
+                print("Le résultat est le suivant:",result)
+                assert -1 <= result <= 1, f"Le silhouette score de {result} ne respecte pas les valeurs attendues pour {full_url}."
+            elif endpoint_type == "plot":
+                headers = response.headers
+                format_type = headers.get("content-type")
+                print("Le format de l'image:",format_type)
+                assert format_type == "image/png", f"L'API ne renvoie pas une image PNG pour {full_url}."
+        except RequestException as e:
+            pytest.fail(f"Erreur lors de la requête {full_url}: {e}")
 
 
-check_response(list_url)
