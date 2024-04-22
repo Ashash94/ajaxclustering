@@ -5,3 +5,10 @@ fastapi
 pandas
 numpy
 requests
+pytest
+fastapi
+httpx
+pandas
+numpy
+pickle
+os

@@ -17,11 +17,8 @@ jobs:
     steps : 
       - name: Install dependencies
         run: |
-          pip install pytest
-          pip install fastapi
-          pip install uvicorn
-          pip install requests
-          pip install httpx
+          pip install -r backend/requirements.txt
+
 
       - uses: actions/checkout@v3
 
