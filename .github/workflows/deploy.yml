@@ -19,7 +19,6 @@ jobs:
         run: |
           pip install -r backend/requirements.txt
 
-
       - uses: actions/checkout@v3
 
       - name : Test backend with pytest
