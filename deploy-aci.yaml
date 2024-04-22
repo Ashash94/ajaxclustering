@@ -16,7 +16,7 @@ properties:
           memoryInGb: 1.5
       ports:
       - port: 8000
-  restartPolicy: Never
+    restartPolicy: Never
 
   - name: b15frontend
     properties:
