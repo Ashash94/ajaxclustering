@@ -16,6 +16,8 @@ properties:
           memoryInGb: 1.5
       ports:
       - port: 8000
+    restartPolicy: Never
+
   - name: b15frontend
     properties:
       image: ashleyregisterb15.azurecr.io/ajaxfrontend:latest
@@ -34,6 +36,15 @@ properties:
       port: 8000
     - protocol: tcp
       port: 8001
+      
 tags:
   ashley: b15
 type: Microsoft.ContainerInstance/containerGroups
+
+containers:
+  - name: b15backend
+    properties:
+      ...
+    instanceView:
+      ...
+restartPolicy: Never

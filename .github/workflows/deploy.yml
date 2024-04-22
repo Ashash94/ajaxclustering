@@ -75,7 +75,7 @@ jobs:
           include: 'deploy-aci.yaml'
       
        
-      - name: Delete Previous Same Container Instances
+      - name: Delete Previous Same Container Instancesè
         run: az container delete --resource-group ashleyb15 --name ashleyContainerGroupB15 --yes
    
       - name: Deploy to Azure Container Instances
