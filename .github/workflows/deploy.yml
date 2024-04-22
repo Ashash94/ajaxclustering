@@ -21,6 +21,7 @@ jobs:
           pip install fastapi
           pip install uvicorn
           pip install requests
+          pip install httpx
 
       - uses: actions/checkout@v3
 
