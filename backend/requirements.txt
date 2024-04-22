@@ -10,5 +10,4 @@ fastapi
 httpx
 pandas
 numpy
-os
 pickle
