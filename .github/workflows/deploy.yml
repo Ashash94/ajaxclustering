@@ -15,7 +15,7 @@ jobs:
 
     steps : 
       - name : Test backend with pytest
-        run : 
+        run : |
           cd backend && pytest
 
   build-and-deploy:
