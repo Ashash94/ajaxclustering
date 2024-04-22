@@ -2,7 +2,7 @@ import pytest
 from fastapi.testclient import TestClient
 from requests.exceptions import RequestException
 
-from main import app, HOST, PORT
+from main import app
 
 client = TestClient(app)
 
@@ -13,13 +13,10 @@ endpoints = [
     ("/dbscan/plot", "plot"),
 ]
 
-PORT = str(PORT)
-
 def test_api_endpoints():
     for endpoint, endpoint_type in endpoints:
         try:
-            full_url = HOST + ":" + PORT + endpoint 
-            response = client.get(full_url)
+            response = client.get(endpoint)
             assert response.status_code == 200, f"La requête à {full_url} a échoué avec le code {response.status_code}"
 
             if endpoint_type == "score":
