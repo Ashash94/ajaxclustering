@@ -16,7 +16,7 @@ jobs:
     steps : 
       - name : Test backend with pytest
         run : 
-          cd ./backend && pytest
+          cd backend && pytest
 
   build-and-deploy:
     runs-on: ubuntu-latest
