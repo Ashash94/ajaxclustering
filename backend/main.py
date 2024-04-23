@@ -24,8 +24,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-HOST = "ashley-ajax-clustering.westeurope.azurecontainer.io"
-PORT = 8000
+HOST = "0.0.0.0"
+PORT = 8002
 
 # Models loading
 with open("pkl/kmeans.pkl", "rb") as f:
