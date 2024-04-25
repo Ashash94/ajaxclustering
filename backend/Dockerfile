@@ -1,4 +1,3 @@
-FROM python:3.10-slim
 
 WORKDIR /app
 
@@ -8,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
 
-CMD ["python", "python main.py"]
+CMD ["sh", "-c", "python pkl_gen.py && python main.py"]
