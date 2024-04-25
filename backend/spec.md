@@ -1,6 +1,6 @@
 # API
 
-Dans le cadre de l'analyse de donnée des clients d'un centre commercial, nous utilisons les 3 modèles de clusterisations suivants : K-Means, Spectral Clustering et DBSCAN
+Dans le cadre de l'analyse de donnée des clients d'un centre commercial, nous utilisons les modèles de clusterisations suivants : K-Means et DBSCAN.
 
 ### Modèles utilisés
 
